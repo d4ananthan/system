@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+
+    <EditText
+            android:id="@+id/ed1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/ed2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="class" />
+
+
+    <CheckBox
+        android:id="@+id/cb1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MC" />
+
+    <RadioGroup
+        android:id="@+id/rg1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp" >
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="fair" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="good" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Excellent" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ML" />
+
+    <RadioGroup
+        android:id="@+id/rg2"
+        android:layout_width="match_parent"
+        android:layout_height="61dp" >
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="fair" />
+
+        <RadioButton
+            android:id="@+id/rb5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="good" />
+
+        <RadioButton
+            android:id="@+id/rb6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Excellent" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADM" />
+
+    <RadioGroup
+        android:id="@+id/rg3"
+        android:layout_width="match_parent"
+        android:layout_height="79dp" >
+
+        <RadioButton
+            android:id="@+id/rb7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="fair" />
+
+        <RadioButton
+            android:id="@+id/rb8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="good" />
+
+        <RadioButton
+            android:id="@+id/rb9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Excellent" />
+    </RadioGroup>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="feedback"/>
+
+
+</LinearLayout>
+
+
+
+
+java
+package com.example.feedback;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public void feedback(View V)
+    {
+        EditText t1,t2;
+        t1=findViewById(R.id.ed1);
+        t2=findViewById(R.id.ed2);
+        String s1=t1.getText().toString();
+        String s2=t2.getText().toString();
+        CheckBox c1,c2,c3;
+        RadioGroup r1,r2,r3;
+        c1=findViewById(R.id.cb1);
+        c2=findViewById(R.id.cb2);
+        c3=findViewById(R.id.cb3);
+        String cs=" ";
+        String tot=" ";
+        if(c1.isChecked())
+        {
+            cs=cs+ " "+c1.getText();
+            r1=findViewById(R.id.rg1);
+            int r11=r1.getCheckedRadioButtonId();
+            RadioButton rbb1=findViewById(r11);
+            String rat1=rbb1.getText().toString();
+            tot=tot+"Name:"+s1+"\n"+"Class:"+s2+"\n"+"subject:"+cs+"\n"+"Rate:"+rat1;
+
+        }
+
+       if(c2.isChecked())
+       {
+           String cs1=" ";
+           cs1=cs1+" "+c2.getText();
+           r2=findViewById(R.id.rg2);
+           int r12=r2.getCheckedRadioButtonId();
+           RadioButton rbb2=findViewById(r12);
+           String rat2=rbb2.getText().toString();
+           tot=tot+"\n"+"subject:"+cs1+"\n"+"Rate:"+rat2;
+       }
+       if(c3.isChecked())
+       {
+           String cs3=" ";
+           cs3=cs3+" "+c3.getText();
+           r3=findViewById(R.id.rg3);
+           int r13=r3.getCheckedRadioButtonId();
+           RadioButton rbb3=findViewById(r13);
+           String rat3=rbb3.getText().toString();
+           tot=tot+"\n"+"subject"+cs3+"\n"+"Rate:"+rat3;
+       }
+        Toast.makeText(getApplicationContext(),tot,Toast.LENGTH_LONG).show();
+    }
+}

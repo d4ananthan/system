@@ -1,0 +1,30 @@
+package com.example.add;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import static android.app.ProgressDialog.show;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public void add(View v)
+    {
+        EditText  t1,t2;
+        t1=(EditText)findViewById(R.id.nm1);
+        t2=(EditText)findViewById(R.id.nm2);
+        String s1=t1.getText().toString();
+        int x=Integer.parseInt(s1);
+        String s2=t2.getText().toString();
+        int y=Integer.parseInt(s2);
+        int z=x+y;
+        Toast.makeText(getApplicationContext(),String.valueOf(z),Toast.LENGTH_LONG).show();
+    }
+}
